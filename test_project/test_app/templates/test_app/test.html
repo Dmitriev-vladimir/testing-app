@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{test_case}}{% endblock %}
+
+{% block content %}
+<h1 class="pb-5">{{test_case}}</h1>
+<p class="fs-3 py-2">Description of test: {{test_case}}</p>
+
+<a href="{% url 'test-page' test_case.pk 0 %}" class="btn btn-primary w-25">Начать тест</a>
+
+{% endblock %}
+

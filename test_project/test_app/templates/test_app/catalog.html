@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Каталог тестов{% endblock %}
+
+{% block content %}
+<h1>Каталог тестов</h1>
+<p class="fs-4 p-4 my-4">Выберите набор тестов:</p>
+
+<div class="list-group">
+    {% for test in catalog %}
+
+    <a href="{% url 'test' test.pk %}" class="list-group-item list-group-item-action fs-3 fw-semibold py-3 my-2">{{test.title}}</a>
+    {% endfor %}
+</div>
+{% endblock %}
+

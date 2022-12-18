@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block title %}{{test_case}}{% endblock %}
+
+{% block content %}
+<h1 class="pb-5">{{test_case}}</h1>
+<p class="fs-3 py-2">{{test.question}}</p>
+PK: {{pk}}
+PK_2: {{test.question.pk}}
+<form method="post" class="w-50 form-group">
+    {% csrf_token %}
+    <ul class="list-group ms-5">
+        {% for answer in test.answers %}
+        <li class="list-group-item form-check form-switch">
+            <input type="checkbox" name="{{answer.pk}}" id="answer-{{answer.pk}}"
+                   role="switch" class="form-check-input ms-1" style="cursor: pointer">
+            <label for="answer-{{answer.pk}}" class="form-check-label ps-4 fs-5" style="cursor: pointer">
+                {{answer.answer}}
+            </label>
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="fs-6 py-2 text-danger">Возможно более одного правильного ответа</p>
+
+    <input type="submit" value="Подтвердить" class="btn btn-primary w-25">
+</form>
+{% endblock %}
+
